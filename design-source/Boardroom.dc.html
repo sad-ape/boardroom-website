@@ -624,19 +624,13 @@ class Component extends DCLogic {
   onToolClick = (e) => {
     const t = e.currentTarget.dataset.tool;
     if (t === 'voice' || t === 'photo' || t === 'camera') return;
-    if (t === 'text') {
-      if (this.p < 0.1) this.placeTextInput({ x: 120 + Math.random() * 100, y: 130 + Math.random() * 80 });
-      return;
+    // Selecting a tool makes it the only active one; re-clicking clears it.
+    const select = this.state.tool !== t;
+    this.setState({ tool: select ? t : null });
+    if (select && this.p < 0.1) {
+      if (t === 'text') this.placeTextInput({ x: 120 + Math.random() * 100, y: 130 + Math.random() * 80 });
+      else if (t === 'pen') this.placeSticker({ x: 130 + Math.random() * 80, y: 130 + Math.random() * 80 });
     }
-    if (t === 'pen') {
-      if (this.p < 0.1) this.placeSticker({ x: 130 + Math.random() * 80, y: 130 + Math.random() * 80 });
-      return;
-    }
-    if (t === 'camera') {
-      if (this.p < 0.1) this.openCamera({ x: 130 + Math.random() * 80, y: 130 + Math.random() * 80 });
-      return;
-    }
-    this.setState(s => ({ tool: s.tool === t ? null : t }));
   };
   tryEmail() {
     const input = this.q('emailinput');
