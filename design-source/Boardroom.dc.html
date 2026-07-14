@@ -119,7 +119,7 @@
         </div>
 
         <!-- user-placed notes / tiles -->
-        <div data-role="userlayer" style="position:absolute; inset:0; z-index:5; pointer-events:none">
+        <div data-role="userlayer" style="position:absolute; inset:0; z-index:11; pointer-events:none">
           <sc-for list="{{ notes }}" as="n" hint-placeholder-count="0">
             <div data-item="{{ n.i }}" onPointerDown="{{ onItemDown }}" style="position:absolute; left:{{ n.x }}px; top:{{ n.y }}px; transform:translate(-50%,-50%) rotate({{ n.rot }}deg); cursor:grab; touch-action:none; pointer-events:auto; animation:brdrm-pop .28s cubic-bezier(.2,1.4,.4,1)">
               <sc-if value="{{ n.text }}" hint-placeholder-val="{{ false }}">
