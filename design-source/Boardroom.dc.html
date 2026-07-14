@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="rgb(232,233,224)"/><rect x="30" y="37" width="40" height="17" rx="8.5" fill="rgb(0,0,0)"/><text x="50" y="49" font-family="monospace" font-size="8.5" fill="#ffffff" text-anchor="middle">brdrm</text><path d="M34 64 C42 57 50 70 58 62 C62 58 66 60 67 64" fill="none" stroke="rgb(189,0,255)" stroke-width="3" stroke-linecap="round"/></svg>
+</template>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Baloo+2:wght@600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:rgb(239,239,237);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;-webkit-text-size-adjust:100%}
+    a{color:rgb(31,107,255);text-decoration:none}
+    a:hover{color:rgb(20,80,210)}
+    input{font:inherit;outline:none;border:none;background:none}
+    button{font:inherit;cursor:pointer;border:none;background:none;padding:0}
+    ::selection{background:rgba(31,107,255,.2)}
+    [data-role="scroller"]{scrollbar-width:none}
+    [data-role="scroller"]::-webkit-scrollbar{width:0;height:0;display:none}
+    .brdrm-note::placeholder{color:rgba(255,255,255,.55)}
+    @keyframes brdrm-float{0%{transform:translateY(0) scale(.6);opacity:0}18%{opacity:1;transform:translateY(-4px) scale(1.05)}100%{transform:translateY(-40px) scale(1);opacity:0}}
+    @keyframes brdrm-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+    @keyframes brdrm-pop{0%{scale:0}70%{scale:1.08}100%{scale:1}}
+    @keyframes brdrm-pulse{0%,100%{opacity:.5}50%{opacity:1}}
+    @keyframes brdrm-draw{to{stroke-dashoffset:0}}
+    @keyframes brdrm-write{from{clip-path:inset(0 100% 0 0 round 17.924px)}to{clip-path:inset(0 0 0 0 round 17.924px)}}
+    @keyframes brdrm-fadein{from{opacity:0}to{opacity:1}}
+    @keyframes brdrm-vpop{0%{scale:.82;opacity:0}45%{opacity:1}100%{scale:1;opacity:1}}
+    @keyframes brdrm-dogin{0%{translate:-12px 10px;rotate:-5deg;scale:.93;opacity:0}100%{translate:0 0;rotate:0deg;scale:1;opacity:1}}
+    @keyframes brdrm-photoin{0%{translate:18px 6px;scale:.93;opacity:0}100%{translate:0 0;scale:1;opacity:1}}
+    @keyframes brdrm-textin{0%{translate:4px -18px;rotate:-4deg;scale:.86;opacity:0}30%{opacity:1}100%{translate:0 0;rotate:0deg;scale:1;opacity:1}}
+    @keyframes brdrm-popup{0%{scale:.72;opacity:0}55%{opacity:1}100%{scale:1;opacity:1}}
+  </style>
+</helmet>
+
+<div data-role="scroller" ref="{{ rootRef }}" style="position:relative; width:100%; height:100vh; overflow-y:auto; overflow-x:hidden; overscroll-behavior-y:contain; -webkit-overflow-scrolling:touch; background:rgb(239,239,237)">
+  <div data-role="track" style="position:relative; width:100%; height:250vh">
+  <div data-role="sticky" style="position:sticky; top:0; height:100vh; width:100%; overflow:hidden; display:flex; align-items:center; justify-content:center">
+    <div data-role="stage" style="position:relative; width:402.063px; height:874px; flex:none; transform-origin:center center">
+
+      <!-- ================= PHONE (bezel + screen + home screen) ================= -->
+      <div data-role="phone" style="position:absolute; opacity:0; overflow:hidden; box-sizing:border-box; background:rgb(239,239,237); box-shadow:inset 0 0 0 1px rgba(0,0,0,.15), 0 34px 80px rgba(30,32,28,.18), 0 8px 20px rgba(30,32,28,.10); z-index:1">
+        <img data-role="homescreen" src="assets/homescreen.png" alt="" style="position:absolute; left:0; top:0; width:100%; height:100%; object-fit:cover; opacity:0">
+        <a data-role="flowerlink" href="https://www.oneyear.garden/" target="_blank" rel="noopener" aria-label="one year garden" style="position:absolute; left:9%; top:53.6%; width:13%; height:5.8%; z-index:3; pointer-events:none"></a>
+        <a data-role="flowerlink" href="https://www.oneyear.garden/" target="_blank" rel="noopener" aria-label="one year garden" style="position:absolute; left:9%; top:60%; width:13%; height:5.8%; z-index:3; pointer-events:none"></a>
+      </div>
+
+      <!-- ================= APP CHROME: boardroom pill ================= -->
+      <div data-role="pill" style="position:absolute; left:141.327px; top:72px; display:flex; align-items:center; justify-content:center; padding:5.235px 15.704px; border-radius:130px; background:rgb(0,0,0); transform-origin:0 0; z-index:2">
+        <span data-role="pilltext" style="font-family:'SF Mono',ui-monospace,'DM Mono',Menlo,monospace; font-weight:500; font-size:17.012px; line-height:1; letter-spacing:-.05em; color:rgb(255,255,255)">boardroom</span>
+      </div>
+
+      <!-- ================= LIVE PRESENCE BADGE ================= -->
+      <div data-role="live" style="position:absolute; left:0; top:30px; width:402.063px; display:flex; align-items:center; justify-content:center; gap:7px; z-index:5">
+        <span style="display:inline-flex; align-items:center; gap:6px; padding:5px 12px 5px 10px; border-radius:130px; background:rgba(255,255,255,.55); box-shadow:inset 0 0 0 1px rgba(0,0,0,.06); backdrop-filter:blur(6px); font-family:'SF Mono',ui-monospace,'DM Mono',Menlo,monospace; font-weight:500; font-size:12.5px; letter-spacing:-.05em; color:rgb(0,0,0)">
+          <span data-role="livedots" style="display:inline-flex"></span>
+          <span data-role="livecount">28 board members editing</span>
+        </span>
+      </div>
+
+      <!-- ================= THE BOARD (persistent element) ================= -->
+      <div data-role="board" style="position:absolute; left:31.177px; top:156.317px; width:340.464px; height:340.464px; transform-origin:0 0; z-index:4; overflow:hidden; border-radius:26.289px; box-shadow:0 0 0 1.37px rgba(255,255,255,.9), 0 18px 40px rgba(30,32,28,.10)">
+        <!-- paper -->
+        <div style="position:absolute; inset:0; border-radius:26.289px; background:rgb(232,233,224)"></div>
+
+        <!-- collage clip -->
+        <div style="position:absolute; left:-3.168px; top:26.982px; width:354.746px; height:305.176px; overflow:visible; border-radius:0; z-index:4; pointer-events:none">
+          <!-- dog -->
+          <div data-drag="dog" onPointerDown="{{ onDragDown }}" style="position:absolute; pointer-events:auto; cursor:grab; touch-action:none; left:0; top:74.046px; width:149.763px; height:237.404px; transform:matrix(0.974,-0.228,0.228,0.974,0,0); transform-origin:0 0; background:url(assets/dog.png) center/cover no-repeat; animation:brdrm-dogin .55s cubic-bezier(.2,.7,.3,1) .45s backwards"></div>
+          <!-- omg haha (blue) -->
+          <div data-drag="omg" onPointerDown="{{ onDragDown }}" style="position:absolute; pointer-events:auto; cursor:grab; touch-action:none; left:54.746px; top:244.106px; width:106.295px; height:37.244px; transform:matrix(1,0,-0.001,1,0,0); transform-origin:center; border-radius:17.924px; background:rgb(31,107,255); display:flex; align-items:center; justify-content:center; padding:6.392px 14.34px 9.56px; animation:brdrm-popup .4s cubic-bezier(.2,.7,.35,1) 2.4s backwards">
+            <span style="font-family:'SF Mono',ui-monospace,'DM Mono',Menlo,monospace; font-weight:500; font-size:16.729px; line-height:1; letter-spacing:-.05em; color:rgb(255,255,255)">omg haha</span>
+          </div>
+          <!-- crown (purple marker doodle) -->
+          <div style="position:absolute; left:17.009px; top:7.47px; width:132.882px; height:94.636px; pointer-events:none">
+            <svg width="100%" height="100%" viewBox="0 0 133 95" style="overflow:visible"><path d="M9 90 C6 62 5 30 8 16 C8.5 13 11 13 12 16 L34 54 C35.5 56.5 38.5 56.5 40 53 L57 10 C58 7.5 61 7.5 62 10 L82 52 C83.5 55 86.5 55 88 52 L108 15 C109.5 12.5 112 13.5 112 17 C114.5 41 114.5 66 112 90" pathLength="1" fill="none" stroke="rgb(189,0,255)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" style="stroke-dasharray:1;stroke-dashoffset:1;animation:brdrm-draw 1.1s ease-in-out 1.4s both, brdrm-fadein 1ms linear 1.4s both"></path></svg>
+          </div>
+          <div style="position:absolute; left:40.89px; top:80.784px; width:89.572px; height:24.486px; pointer-events:none">
+            <svg width="100%" height="100%" viewBox="0 0 90 25" style="overflow:visible"><path d="M3 21 C22 6 47 3 70 9 C79 11 85 14 88 18" pathLength="1" fill="none" stroke="rgb(189,0,255)" stroke-width="4" stroke-linecap="round" style="stroke-dasharray:1;stroke-dashoffset:1;animation:brdrm-draw .5s ease-in-out 2.3s both, brdrm-fadein 1ms linear 2.3s both"></path></svg>
+          </div>
+          <!-- sunset photo -->
+          <div data-drag="sunset" onPointerDown="{{ onDragDown }}" style="position:absolute; pointer-events:auto; cursor:grab; touch-action:none; left:216.888px; top:0; width:140.636px; height:187.515px; transform:matrix(0.980,0.198,-0.198,0.980,0,0); transform-origin:0 0; border-radius:8.218px; background:url(assets/sunset.jpg) center/cover no-repeat; box-shadow:0 4px 14px rgba(0,0,0,.18); animation:brdrm-photoin .55s cubic-bezier(.2,.7,.3,1) .9s backwards"></div>
+          <!-- dog emoji (green) -->
+          <div data-drag="emoji" onPointerDown="{{ onDragDown }}" style="position:absolute; pointer-events:auto; cursor:grab; touch-action:none; left:24.274px; top:155.212px; width:42.004px; height:34.101px; transform:matrix(0.959,-0.285,0.285,0.959,0,0); transform-origin:0 0; border-radius:18.262px; background:rgb(3,153,0); display:flex; align-items:center; justify-content:center; padding:3.653px 9.131px 5.479px; animation:brdrm-popup .35s cubic-bezier(.2,.7,.35,1) 1s backwards">
+            <span style="font-family:'SF Mono',ui-monospace,'DM Mono',Menlo,monospace; font-weight:500; font-size:23.741px; line-height:1">🐶</span>
+          </div>
+          <!-- Last day? (green) -->
+          <div data-drag="lastday" onPointerDown="{{ onDragDown }}" style="position:absolute; pointer-events:auto; cursor:grab; touch-action:none; left:185.016px; top:24.955px; width:115.427px; height:37.244px; transform:matrix(1,0,-0.001,1,0,0); transform-origin:center; border-radius:17.924px; background:rgb(3,153,0); display:flex; align-items:center; justify-content:center; padding:6.392px 14.34px 9.56px; animation:brdrm-popup .4s cubic-bezier(.2,.7,.35,1) 1.9s backwards">
+            <span style="font-family:'SF Mono',ui-monospace,'DM Mono',Menlo,monospace; font-weight:500; font-size:16.729px; line-height:1; letter-spacing:-.05em; color:rgb(255,255,255)">Last day?</span>
+          </div>
+          <!-- 8s voice note (purple) -->
+          <div data-drag="voice8s" onPointerDown="{{ onDragDown }}" style="position:absolute; pointer-events:auto; cursor:grab; touch-action:none; left:255.692px; top:177.448px; width:69.028px; height:39.208px; transform:matrix(1,0,-0.001,1,0,0); transform-origin:center; border-radius:17.924px; background:rgb(189,0,255); display:flex; align-items:center; justify-content:center; gap:7px; padding:9.56px 14.34px 9.56px 7.305px; animation:brdrm-popup .4s cubic-bezier(.2,.7,.35,1) 2.8s backwards">
+            <span style="display:block; width:0; height:0; border-style:solid; border-width:6px 0 6px 10px; border-color:transparent transparent transparent rgb(255,255,255)"></span>
+            <span style="font-family:'SF Mono',ui-monospace,'DM Mono',Menlo,monospace; font-weight:500; font-size:16.729px; line-height:1; letter-spacing:-.05em; color:rgb(255,255,255)">8s</span>
+          </div>
+        </div>
+
+        <!-- ink (user drawings) -->
+        <svg data-role="ink" viewBox="0 0 340.464 340.464" style="position:absolute; left:0; top:0; width:340.464px; height:340.464px; overflow:visible; pointer-events:none; z-index:8">
+          <sc-for list="{{ strokes }}" as="st" hint-placeholder-count="0">
+            <path d="{{ st.d }}" fill="none" stroke="{{ st.color }}" stroke-width="{{ st.width }}" stroke-linecap="round" stroke-linejoin="round"></path>
+          </sc-for>
+          <path data-role="inklive" ref="{{ inkLiveRef }}" d="" fill="none" stroke="{{ yourColor }}" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+
+        <!-- hit layer for placing / drawing -->
+        <div data-role="hit" onPointerDown="{{ onBoardDown }}" style="position:absolute; inset:0; z-index:3; pointer-events:none; touch-action:auto; border-radius:26.289px"></div>
+
+        <!-- NYC Crew label -->
+        <div style="position:absolute; left:14.058px; top:14.499px; width:106.295px; height:30.133px; box-sizing:border-box; padding:1.826px 14.34px; border-radius:119.497px; background:linear-gradient(140deg, rgba(255,255,255,.24) 0%, rgba(255,255,255,.07) 60%, rgba(255,255,255,.15) 100%); -webkit-backdrop-filter:blur(7px) saturate(170%); backdrop-filter:blur(7px) saturate(170%); box-shadow:inset 0 1px 1px rgba(255,255,255,.7), inset 0 0 0 .75px rgba(255,255,255,.4), 0 4px 12px rgba(30,32,28,.12); display:flex; align-items:center; justify-content:center; pointer-events:none; z-index:15; animation:brdrm-fadein .45s ease .2s backwards">
+          <span style="font-family:'SF Mono',ui-monospace,'DM Mono',Menlo,monospace; font-weight:500; font-size:16.729px; line-height:1; letter-spacing:-.05em; color:rgb(0,0,0)">NYC Crew</span>
+        </div>
+
+        <!-- user-placed notes / tiles -->
+        <div data-role="userlayer" style="position:absolute; inset:0; z-index:5; pointer-events:none">
+          <sc-for list="{{ notes }}" as="n" hint-placeholder-count="0">
+            <div data-item="{{ n.i }}" onPointerDown="{{ onItemDown }}" style="position:absolute; left:{{ n.x }}px; top:{{ n.y }}px; transform:translate(-50%,-50%) rotate({{ n.rot }}deg); cursor:grab; touch-action:none; pointer-events:auto; animation:brdrm-pop .28s cubic-bezier(.2,1.4,.4,1)">
+              <sc-if value="{{ n.text }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex; align-items:center; gap:6px; padding:6px 13px 8px; border-radius:17px; background:{{ n.color }}; box-shadow:0 6px 16px rgba(0,0,0,.16); white-space:nowrap">
+                  <span style="font-family:'SF Mono',ui-monospace,'DM Mono',Menlo,monospace; font-weight:500; font-size:16px; line-height:1; letter-spacing:-.05em; color:#fff">{{ n.text }}</span>
+                </div>
+              </sc-if>
+              <sc-if value="{{ n.img }}" hint-placeholder-val="{{ false }}">
+                <div style="width:{{ n.w }}px; height:{{ n.w }}px; background:url({{ n.img }}) center/contain no-repeat; filter:drop-shadow(0 5px 12px rgba(0,0,0,.18)); pointer-events:none"></div>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+
+      </div>
+
+      <!-- ================= COLLABORATOR AVATARS ================= -->
+      <div data-role="avatars" style="position:absolute; left:32.177px; top:509px; width:307.26px; display:flex; align-items:center; gap:6.543px; transform-origin:0 0; z-index:2">
+        <div style="display:flex; align-items:center; padding:5.235px 15.704px; border-radius:130px; background:rgb(31,107,255)"><span style="font-family:'SF Mono',ui-monospace,'DM Mono',Menlo,monospace; font-weight:500; font-size:18.321px; line-height:1; letter-spacing:-.05em; color:#fff">You</span></div>
+        <div style="display:flex; align-items:center; padding:5.235px 15.704px; border-radius:130px; background:rgb(3,153,0)"><span style="font-family:'SF Mono',ui-monospace,'DM Mono',Menlo,monospace; font-weight:500; font-size:18.321px; line-height:1; letter-spacing:-.05em; color:#fff">Luke</span></div>
+        <div style="display:flex; align-items:center; padding:5.235px 15.704px; border-radius:130px; background:rgb(189,0,255)"><span style="font-family:'SF Mono',ui-monospace,'DM Mono',Menlo,monospace; font-weight:500; font-size:18.321px; line-height:1; letter-spacing:-.05em; color:#fff">Mia</span></div>
+        <div style="display:flex; align-items:center; gap:3px; padding:5.235px 13.5px; border-radius:130px; background:rgb(226,226,223)"><span style="font-family:'SF Mono',ui-monospace,'DM Mono',Menlo,monospace; font-weight:500; font-size:18.321px; line-height:1; letter-spacing:-.05em; color:rgb(90,90,86)">Add</span></div>
+      </div>
+
+      <!-- ================= TOOLBAR ================= -->
+      <div data-role="toolbar" style="position:absolute; left:91.147px; top:610.198px; width:219.77px; display:flex; flex-wrap:wrap; gap:17px 18.219px; transform-origin:0 0; z-index:2">
+        <button data-tool="text" onClick="{{ onToolClick }}" style="width:57.887px; height:57.887px; border-radius:50%; background:rgb(219,219,214); color:rgb(0,0,0); display:flex; align-items:center; justify-content:center; transition:background .15s, color .15s, transform .1s">
+          <svg width="26" height="17" viewBox="0 0 26 17" fill="none"><path d="M1.47208 16.3466C0.600567 16.3466 -6.71363e-05 15.8167 -6.71363e-05 15.0158C-6.71363e-05 14.6978 0.0823728 14.3328 0.282584 13.7321L4.33392 2.11986C4.84034 0.624167 5.55874 -2.13683e-05 6.90134 -2.13683e-05C8.23215 -2.13683e-05 8.93878 0.61239 9.4452 2.11986L13.4965 13.7321C13.6614 14.2385 13.7439 14.6272 13.7439 14.9569C13.7439 15.8049 13.1432 16.3466 12.2364 16.3466C11.3766 16.3466 10.882 15.8991 10.564 14.8038L9.65719 12.0715H4.01594L3.12087 14.8038C2.79111 15.9109 2.32003 16.3466 1.47208 16.3466ZM4.72257 9.70434H8.96234L6.92489 3.20336H6.77179L4.72257 9.70434ZM22.6945 14.6154C22.0585 15.7342 20.8219 16.3702 19.2909 16.3702C16.853 16.3702 15.2042 14.8392 15.2042 12.5662C15.2042 10.2579 16.9119 8.83283 19.7502 8.83283H22.718V7.80822C22.718 6.54807 21.929 5.88855 20.5039 5.88855C19.5618 5.88855 18.8905 6.24186 18.1956 6.86605C17.8423 7.1487 17.5125 7.27825 17.0061 7.27825C16.323 7.27825 15.8991 6.81894 15.8991 6.18298C15.8991 5.45279 16.4055 4.71083 17.5008 4.15731C18.2898 3.74511 19.338 3.50957 20.7041 3.50957C23.9782 3.50957 25.8154 5.06415 25.8154 7.83178V14.6625C25.8154 15.7225 25.2737 16.3231 24.3079 16.3231C23.4835 16.3231 22.9418 15.8638 22.8476 15.0512V14.6154H22.6945ZM18.2898 12.3778C18.2898 13.4141 19.1142 14.1325 20.3273 14.1325C21.6699 14.1325 22.718 13.2139 22.718 12.0362V10.7407H20.3155C19.0436 10.7407 18.2898 11.3531 18.2898 12.3778Z" fill="currentColor"></path></svg>
+        </button>
+        <button data-tool="pen" onClick="{{ onToolClick }}" style="width:57.887px; height:57.887px; border-radius:50%; background:rgb(219,219,214); color:rgb(0,0,0); display:flex; align-items:center; justify-content:center; transition:background .15s, color .15s, transform .1s">
+          <svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M18.8269 1.44702C21.2245 1.4472 23.1677 3.39117 23.1677 5.78882V12.0574C23.1675 18.1848 18.2005 23.1521 12.073 23.1521H5.78882C3.39106 23.1521 1.44702 21.2081 1.44702 18.8103V5.78882C1.44702 3.39106 3.39106 1.44702 5.78882 1.44702H18.8269Z" stroke="currentColor" stroke-width="2.89435"></path><path d="M13.1076 19.5697C13.1076 20.7578 12.1436 21.7209 10.9546 21.7209L15.9461 21.7249C19.152 21.7276 21.7495 19.124 21.7395 15.9181L21.7195 9.53101C21.7195 10.7191 20.7555 11.6822 19.5665 11.6822H18.1312C15.3567 11.6822 13.1076 13.9294 13.1076 16.7015V19.5697Z" fill="currentColor"></path></svg>
+        </button>
+        <button data-tool="photo" onClick="{{ onToolClick }}" style="width:57.887px; height:57.887px; border-radius:50%; background:rgb(219,219,214); color:rgb(0,0,0); display:flex; align-items:center; justify-content:center; transition:background .15s, color .15s, transform .1s">
+          <svg width="33" height="27" viewBox="0 0 33 27" fill="none"><rect x="1.44717" y="-1.44717" width="29.8306" height="23.3413" rx="4.34152" transform="matrix(-1 0 0 1 32.7249 2.89429)" stroke="currentColor" stroke-width="2.89435"></rect><path d="M16.3611 8.52709C16.3611 10.3908 17.8719 11.9016 19.7356 11.9016C21.5993 11.9016 23.1101 10.3908 23.1101 8.52709C23.1101 6.6634 21.5993 5.15259 19.7356 5.15259C17.8719 5.15259 16.3611 6.6634 16.3611 8.52709Z" fill="currentColor"></path><path d="M25.2212 15.2088L29.8303 19.8784V23.3782H2.89399V20.8756L11.4338 12.3357C12.0126 11.7569 12.9511 11.7569 13.5299 12.3357L18.716 17.5219C19.2948 18.1007 20.2332 18.1007 20.812 17.5219L23.1251 15.2088C23.7039 14.63 24.6424 14.63 25.2212 15.2088Z" fill="currentColor"></path></svg>
+        </button>
+        <button data-tool="voice" onClick="{{ onToolClick }}" style="width:57.887px; height:57.887px; border-radius:50%; background:rgb(219,219,214); color:rgb(0,0,0); display:flex; align-items:center; justify-content:center; transition:background .15s, color .15s, transform .1s">
+          <svg width="32" height="27" viewBox="0 0 32 27" fill="none"><line x1="1.44717" y1="12.0812" x2="1.44717" y2="14.895" stroke="currentColor" stroke-width="2.89435" stroke-linecap="round"></line><line x1="7.23624" y1="6.82999" x2="7.23624" y2="20.1461" stroke="currentColor" stroke-width="2.89435" stroke-linecap="round"></line><line x1="13.0248" y1="10.3424" x2="13.0248" y2="16.6338" stroke="currentColor" stroke-width="2.89435" stroke-linecap="round"></line><line x1="18.8136" y1="1.44717" x2="18.8136" y2="25.529" stroke="currentColor" stroke-width="2.89435" stroke-linecap="round"></line><line x1="24.6022" y1="8.14591" x2="24.6022" y2="18.8304" stroke="currentColor" stroke-width="2.89435" stroke-linecap="round"></line><line x1="30.391" y1="12.0812" x2="30.391" y2="14.895" stroke="currentColor" stroke-width="2.89435" stroke-linecap="round"></line></svg>
+        </button>
+        <button data-tool="camera" onClick="{{ onToolClick }}" style="width:57.887px; height:57.887px; border-radius:50%; background:rgb(219,219,214); color:rgb(0,0,0); display:flex; align-items:center; justify-content:center; transition:background .15s, color .15s, transform .1s">
+          <svg width="35" height="28" viewBox="0 0 35 28" fill="none"><path d="M21.0203 1.44702C22.7451 1.44702 24.3064 2.46834 24.9978 4.04858L25.1687 4.43921C25.3992 4.96596 25.9199 5.3064 26.4949 5.3064H28.9431C31.3409 5.3064 33.2849 7.25044 33.2849 9.64819V22.1902C33.2848 24.5878 31.3408 26.531 28.9431 26.531H5.78882C3.39114 26.531 1.44715 24.5878 1.44702 22.1902V9.64819C1.44702 7.25043 3.39106 5.3064 5.78882 5.3064H8.23706C8.81202 5.3064 9.33278 4.96596 9.56323 4.43921L9.73413 4.04858C10.4255 2.46832 11.9868 1.44702 13.7117 1.44702H21.0203Z" stroke="currentColor" stroke-width="2.89435"></path><circle cx="17.3659" cy="15.4797" r="4.23977" fill="currentColor" stroke="currentColor" stroke-width="2.89435"></circle></svg>
+        </button>
+        <button data-tool="scribble" onClick="{{ onToolClick }}" style="width:57.887px; height:57.887px; border-radius:50%; background:rgb(219,219,214); color:rgb(0,0,0); display:flex; align-items:center; justify-content:center; transition:background .15s, color .15s, transform .1s">
+          <svg width="28" height="26" viewBox="0 0 28 26" fill="none"><path d="M1.44727 11.0103C1.44727 11.0103 15.7395 -1.72247 18.9648 2.19637C22.19 6.11521 6.51111 12.7641 9.10435 17.2109C11.6976 21.6577 20.0676 10.5344 22.9971 13.5144C25.9267 16.4944 16.7655 19.9298 18.0872 23.0217C19.4089 26.1137 23.6628 21.0081 25.8717 23.6038" stroke="currentColor" stroke-width="2.89435" stroke-linecap="round"></path></svg>
+        </button>
+      </div>
+
+      <!-- ================= LANDING COPY ================= -->
+      <div data-role="welcome" style="position:absolute; left:0; top:100px; width:402.063px; text-align:center; opacity:0; z-index:6">
+        <div style="font-family:'SF Mono',ui-monospace,'DM Mono',Menlo,monospace; font-weight:500; font-size:14px; line-height:1.2; letter-spacing:-.05em; color:rgb(0,0,0)">Welcome to Boardroom.</div>
+      </div>
+
+      <!-- email capture -->
+      <div data-role="email" style="position:absolute; left:84.032px; top:702px; width:234px; height:43px; opacity:0; z-index:6">
+        <sc-if value="{{ notEmailDone }}" hint-placeholder-val="{{ true }}">
+          <div data-role="emailbox" style="position:relative; width:100%; height:100%; border-radius:100px; box-shadow:inset 0 0 0 1.5px rgb(219,219,214); display:flex; align-items:center; transition:box-shadow .18s">
+            <input data-role="emailinput" type="email" placeholder="join the waitlist" onFocus="{{ onEmailFocus }}" onBlur="{{ onEmailBlur }}" onInput="{{ onEmailInput }}" onKeyDown="{{ onEmailKey }}" style="flex:1; width:100%; height:100%; padding:0 40px; text-align:center; font-family:'SF Mono',ui-monospace,'DM Mono',Menlo,monospace; font-weight:500; font-size:16px; letter-spacing:-.05em; color:rgb(0,0,0); background:none; border:none">
+            <button data-role="emailbtn" onClick="{{ submitEmail }}" aria-label="Join the waitlist" style="position:absolute; right:5px; top:50%; width:33px; height:33px; border-radius:50%; background:rgb(0,0,0); display:flex; align-items:center; justify-content:center; opacity:0; transform:translateY(-50%) scale(.6); transform-origin:center; pointer-events:none; transition:opacity .2s ease, transform .2s cubic-bezier(.2,1.4,.4,1)">
+              <svg width="15" height="15" viewBox="0 0 15 15"><path d="M2 7.5 L12 7.5 M7.5 3 L12 7.5 L7.5 12" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ emailDone }}" hint-placeholder-val="{{ false }}">
+          <div style="width:100%; height:100%; border-radius:100px; background:rgb(0,0,0); display:flex; align-items:center; justify-content:center; gap:8px; animation:brdrm-pop .3s cubic-bezier(.2,1.4,.4,1)">
+            <span style="font-size:15px">✦</span>
+            <span style="font-family:'SF Mono',ui-monospace,'DM Mono',Menlo,monospace; font-weight:500; font-size:14px; letter-spacing:-.05em; color:#fff">you're on the list</span>
+          </div>
+        </sc-if>
+      </div>
+
+      <!-- scroll hint -->
+      <div data-role="hint" style="position:absolute; left:0; top:812px; width:402.063px; display:flex; flex-direction:column; align-items:center; gap:6px; z-index:6; pointer-events:none">
+        <span style="font-family:'SF Mono',ui-monospace,'DM Mono',Menlo,monospace; font-weight:500; font-size:14px; line-height:1; letter-spacing:-.05em; color:rgb(0,0,0)">scroll down</span>
+        <span style="display:block; animation:brdrm-bob 1.4s ease-in-out infinite">
+          <svg width="11" height="13" viewBox="0 0 16 18"><path d="M8 1 L8 16 M2 10 L8 16 L14 10" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </span>
+      </div>
+
+    </div>
+  </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100vh&quot;},&quot;yourColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;rgb(31,107,255)&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;You&quot;,&quot;options&quot;:[&quot;rgb(31,107,255)&quot;,&quot;rgb(189,0,255)&quot;,&quot;rgb(3,153,0)&quot;,&quot;rgb(255,31,233)&quot;,&quot;rgb(255,90,61)&quot;]},&quot;yourName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;You&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;You&quot;},&quot;liveTeammates&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:3,&quot;min&quot;:1,&quot;max&quot;:3,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Multiplayer&quot;},&quot;showReactions&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Multiplayer&quot;}}">
+class Component extends DCLogic {
+  rootRef = React.createRef();
+  inkLiveRef = React.createRef();
+  state = { strokes: [], notes: [], reactions: [], tool: null, emailDone: false };
+  p = 0;
+  _rid = 0;
+  _ni = 0;
+
+  // ---------- lifecycle ----------
+  componentDidMount() {
+    this.mobile = window.innerWidth < 760;
+    if (!this.mobile) this.setState({ tool: 'scribble' });
+    // cursor sim state (board-local 340 space)
+    const rnd = (a, b) => a + Math.random() * (b - a);
+    this.cpos = (this._team || []).map(() => ({ x: rnd(60, 280), y: rnd(60, 280), tx: rnd(60, 280), ty: rnd(60, 280), t: rnd(0, 100) }));
+    this.onScroll = () => { this.readScroll(); };
+    this.onResize = () => { this.layout(); };
+    this.scrollEl = this.rootRef.current;
+    if (this.scrollEl) this.scrollEl.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('pointermove', this.onPointerMove);
+    window.addEventListener('pointerup', this.onPointerUp);
+    this.buildLiveDots();
+    this.layout();
+    this.readScroll();
+    this.tick = this.tick.bind(this);
+    this.raf = requestAnimationFrame(this.tick);
+  }
+  componentWillUnmount() {
+    cancelAnimationFrame(this.raf);
+    clearInterval(this.reactTimer); clearInterval(this.liveTimer);
+    if (this.scrollEl) this.scrollEl.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('pointermove', this.onPointerMove);
+    window.removeEventListener('pointerup', this.onPointerUp);
+  }
+
+  // ---------- helpers ----------
+  q(role) { const r = this.rootRef.current; return r ? r.querySelector('[data-role="' + role + '"]') : null; }
+  qa(sel) { const r = this.rootRef.current; return r ? Array.from(r.querySelectorAll(sel)) : []; }
+  clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
+  lerp(a, b, t) { return a + (b - a) * t; }
+  smooth(t) { t = this.clamp(t, 0, 1); return t * t * (3 - 2 * t); }
+  seg(p, a, b) { return this.clamp((p - a) / (b - a), 0, 1); }
+  // interpolate an object across three keyframes at p 0 / .5 / 1
+  stops3(p, k0, k1, k2) {
+    const out = {}; let lo, hi, t;
+    if (p <= 0.5) { lo = k0; hi = k1; t = this.smooth(this.seg(p, 0, 0.5)); }
+    else { lo = k1; hi = k2; t = this.smooth(this.seg(p, 0.5, 1)); }
+    for (const key in k0) out[key] = this.lerp(lo[key], hi[key], t);
+    return out;
+  }
+
+  layout() {
+    this.mobile = window.innerWidth < 760;
+    const st = this.q('stage'); const track = this.q('track');
+    if (!st) return;
+    const vw = window.innerWidth, vh = window.innerHeight;
+    const sc = this.rootRef.current; if (sc) sc.style.height = vh + 'px';
+    const sticky = this.q('sticky'); if (sticky) sticky.style.height = vh + 'px';
+    const scale = Math.min(vw / 402.063, vh / 874);
+    st.style.transform = 'scale(' + scale + ')';
+    this.stageScale = scale;
+    if (track) track.style.height = Math.round((this.mobile ? 3.4 : 2.5) * vh) + 'px';
+  }
+  readScroll() {
+    const el = this.rootRef.current; if (!el) return;
+    const total = (el.scrollHeight - el.clientHeight) || 1;
+    this.p = this.clamp(el.scrollTop / total, 0, 1);
+  }
+
+  // ---------- the frame loop ----------
+  tick() {
+    this.readScroll();
+    this.applyFrame();
+    this.moveCursors();
+    this.raf = requestAnimationFrame(this.tick);
+  }
+
+  applyFrame() {
+    const pRaw = this.p;
+    const pScene = this.mobile ? pRaw : (0.5 + 0.5 * pRaw);
+
+    // board
+    const b = this.stops3(pScene,
+      { x: 31.177, y: 156.317, s: 1 },
+      { x: 81.699, y: 185.529, s: 0.6970 },
+      { x: 109.612, y: 234.149, s: 0.5371 });
+    const board = this.q('board');
+    if (board) board.style.transform = 'translate(' + (b.x - 31.177) + 'px,' + (b.y - 156.317) + 'px) scale(' + b.s + ')';
+    if (board) board.style.boxShadow = '0 0 0 1.37px rgba(255,255,255,' + (0.9 * (1 - this.smooth(this.seg(pScene, 0.58, 0.82)))).toFixed(3) + '), 0 18px 40px rgba(30,32,28,.10)';
+
+    // app chrome opacity (fades out as home screen takes over)
+    const appOp = 1 - this.smooth(this.seg(pScene, 0.58, 0.78));
+    const setPart = (role, base, k0, k1, k2, op) => {
+      const el = this.q(role); if (!el) return;
+      const v = this.stops3(pScene, k0, k1, k2);
+      el.style.transform = 'translate(' + (v.x - base.x) + 'px,' + (v.y - base.y) + 'px) scale(' + v.s + ')';
+      el.style.opacity = op;
+      el.style.pointerEvents = op > 0.5 ? 'auto' : 'none';
+    };
+    const pill = this.q('pill');
+    if (pill) {
+      const pv = this.stops3(pScene, { x: 141.327, y: 72, s: 1 }, { x: 163.063, y: 138.196, s: 0.636 }, { x: 171.7, y: 198.16, s: 0.491 });
+      const pOp = this.smooth(this.seg(pScene, 0.12, 0.46));
+      pill.style.transform = 'translate(' + (pv.x - 141.327) + 'px,' + (pv.y - 72) + 'px) scale(' + pv.s + ')';
+      pill.style.opacity = pOp;
+      pill.style.pointerEvents = 'none';
+      const pillText = this.q('pilltext'); if (pillText) pillText.style.opacity = appOp;
+    }
+    setPart('avatars', { x: 32.177, y: 509 },
+      { x: 32.177, y: 509, s: 1 }, { x: 82.697, y: 433.526, s: 0.6386 }, { x: 109.611, y: 426.299, s: 0.4933 }, appOp);
+    setPart('toolbar', { x: 91.147, y: 610.198 },
+      { x: 91.147, y: 610.198, s: 1 }, { x: 121.923, y: 541.665, s: 0.7295 }, { x: 139.913, y: 509.837, s: 0.5635 }, appOp);
+
+    // phone
+    const ph = this.stops3(pScene,
+      { x: 15, y: 11, w: 371, h: 807, r: 56 },
+      { x: 68.398, y: 126.059, w: 265.266, h: 576.723, r: 40 },
+      { x: 98.565, y: 188.781, w: 204.932, h: 445.548, r: 26.95 });
+    const phoneOp = this.smooth(this.seg(pScene, 0.12, 0.46));
+    const phone = this.q('phone');
+    if (phone) {
+      phone.style.left = ph.x + 'px'; phone.style.top = ph.y + 'px';
+      phone.style.width = ph.w + 'px'; phone.style.height = ph.h + 'px';
+      phone.style.borderRadius = ph.r + 'px'; phone.style.opacity = phoneOp;
+      // screen bg crossfades light -> sage as it becomes a home screen
+      const hs = this.smooth(this.seg(pScene, 0.55, 0.85));
+      phone.style.background = 'rgb(' + Math.round(this.lerp(239, 211, hs)) + ',' + Math.round(this.lerp(239, 213, hs)) + ',' + Math.round(this.lerp(237, 195, hs)) + ')';
+    }
+    // home screen + brdrm icon fade in late
+    const homeOp = this.smooth(this.seg(pScene, 0.62, 0.9));
+    const hsimg = this.q('homescreen'); if (hsimg) hsimg.style.opacity = homeOp;
+    this.qa('[data-role="flowerlink"]').forEach(a => a.style.pointerEvents = homeOp > 0.6 ? 'auto' : 'none');
+
+    // landing copy
+    const cpy = this.q('welcome'); if (cpy) cpy.style.opacity = this.smooth(this.seg(pScene, 0.72, 0.93));
+    const em = this.q('email');
+    if (em) { const eo = this.smooth(this.seg(pScene, 0.8, 0.98)); em.style.opacity = eo; em.style.pointerEvents = eo > 0.6 ? 'auto' : 'none'; }
+
+    // hero-only elements (fade right after user starts scrolling)
+    const presence = 1 - this.smooth(this.seg(pRaw, 0.06, 0.24));
+    const live = this.q('live'); if (live) live.style.opacity = presence;
+    const cursors = this.q('cursors'); if (cursors) cursors.style.opacity = presence;
+    const reacts = this.q('reactions'); if (reacts) reacts.style.opacity = presence;
+    const hint = this.q('hint'); if (hint) hint.style.opacity = 1 - this.smooth(this.seg(pRaw, 0, 0.05));
+
+    // interactivity gate + tool cursor
+    const interactive = pRaw < 0.1;
+    const curTool = this.state.tool;
+    const hit = this.q('hit');
+    if (hit) {
+      hit.style.pointerEvents = interactive && curTool ? 'auto' : 'none';
+      hit.style.zIndex = curTool ? 10 : 3;
+      const drawing = curTool === 'scribble';
+      hit.style.touchAction = interactive && drawing ? 'none' : 'auto';
+      hit.style.cursor = curTool ? 'crosshair' : 'default';
+    }
+    // reflect active tool
+    this.qa('[data-tool]').forEach(btn => {
+      const on = btn.dataset.tool === this.state.tool;
+      const off = btn.dataset.tool === 'voice' || btn.dataset.tool === 'photo';
+      btn.style.background = on ? 'rgb(0,0,0)' : 'rgb(219,219,214)';
+      btn.style.color = on ? 'rgb(219,219,214)' : 'rgb(0,0,0)';
+      btn.style.opacity = off ? '.35' : '1';
+      btn.style.cursor = off ? 'default' : 'pointer';
+      btn.style.transform = on ? 'scale(1.04)' : 'scale(1)';
+    });
+  }
+
+  // ---------- cursors ----------
+  buildLiveDots() {
+    const holder = this.q('livedots');
+    if (holder) {
+      holder.innerHTML = '';
+      ['rgb(31,107,255)', 'rgb(255,31,233)', 'rgb(3,153,0)', 'rgb(189,0,255)'].forEach((c, i) => {
+        const d = document.createElement('span');
+        d.style.cssText = 'width:9px;height:9px;border-radius:50%;background:' + c + ';box-shadow:0 0 0 1.6px rgba(255,255,255,.9);display:inline-block;margin-left:' + (i ? '-3px' : '0') + ';animation:brdrm-pulse 1.6s ease-in-out infinite;animation-delay:' + (i * 0.2) + 's';
+        holder.appendChild(d);
+      });
+    }
+    this._live = 21 + Math.floor(Math.random() * 33);
+    this.renderLive();
+    this.liveTimer = setInterval(() => {
+      this._live = Math.max(12, Math.min(72, this._live + (Math.random() < 0.5 ? -1 : 1) * (1 + Math.floor(Math.random() * 2))));
+      this.renderLive();
+    }, 2600 + Math.random() * 2400);
+  }
+  renderLive() {
+    const cnt = this.q('livecount');
+    if (cnt) cnt.textContent = this._live + ' board members editing';
+  }
+  moveCursors() {
+    if (!this.cpos) return;
+    const nodes = this.qa('[data-cursor]');
+    for (let i = 0; i < this.cpos.length; i++) {
+      const c = this.cpos[i];
+      c.x = this.lerp(c.x, c.tx, 0.018);
+      c.y = this.lerp(c.y, c.ty, 0.018);
+      if (Math.abs(c.x - c.tx) < 6 && Math.abs(c.y - c.ty) < 6) {
+        c.tx = 40 + Math.random() * 260; c.ty = 40 + Math.random() * 260;
+      }
+      const n = nodes.find(nn => +nn.dataset.idx === i);
+      if (n) n.style.transform = 'translate(' + c.x + 'px,' + c.y + 'px)';
+    }
+  }
+  spawnReaction() {
+    if (this.props.showReactions === false) return;
+    if (this.p > 0.22) return;
+    if (!this.cpos || !this.cpos.length) return;
+    const i = Math.floor(Math.random() * this.cpos.length);
+    const c = this.cpos[i];
+    const emojis = ['❤️', '✨', '😂', '🔥', '👀', '💯', '🙌'];
+    const em = emojis[Math.floor(Math.random() * emojis.length)];
+    const id = ++this._rid;
+    const color = (this._team[i] || {}).color || '#000';
+    this.setState(s => ({ reactions: [...s.reactions, { i: id, x: c.x + 6, y: c.y - 6, emoji: em, color }] }));
+    setTimeout(() => this.setState(s => ({ reactions: s.reactions.filter(r => r.i !== id) })), 2400);
+  }
+
+  // ---------- pointer / drawing / placing ----------
+  toPath(pts) {
+    if (!pts.length) return '';
+    return 'M ' + pts.map(p => p.x.toFixed(1) + ' ' + p.y.toFixed(1)).join(' L ');
+  }
+  localPt(e) {
+    const board = this.q('board'); const r = board.getBoundingClientRect();
+    const sx = r.width / 340.464, sy = r.height / 340.464;
+    return { x: (e.clientX - r.left) / sx, y: (e.clientY - r.top) / sy };
+  }
+  onBoardDown = (e) => {
+    if (this.p >= 0.1) return;
+    const tool = this.state.tool;
+    if (!tool) return;
+    const pt = this.localPt(e);
+    if (tool === 'scribble') {
+      this._draw = { pts: [pt], color: this.props.yourColor || 'rgb(31,107,255)', width: tool === 'scribble' ? 4.6 : 4 };
+      if (this.inkLiveRef.current) {
+        this.inkLiveRef.current.setAttribute('stroke', this._draw.color);
+        this.inkLiveRef.current.setAttribute('stroke-width', this._draw.width);
+        this.inkLiveRef.current.setAttribute('d', this.toPath(this._draw.pts));
+      }
+      e.preventDefault();
+    } else {
+      this._tap = { pt, x: e.clientX, y: e.clientY };
+    }
+  };
+  onPointerMove = (e) => {
+    if (this._draw) {
+      const pt = this.localPt(e);
+      this._draw.pts.push(pt);
+      if (this.inkLiveRef.current) this.inkLiveRef.current.setAttribute('d', this.toPath(this._draw.pts));
+    } else if (this._drag) {
+      const pt = this.localPt(e);
+      const idx = this._drag.i;
+      this.setState(s => ({ notes: s.notes.map(n => n.i === idx ? { ...n, x: pt.x - this._drag.ox, y: pt.y - this._drag.oy } : n) }));
+    } else if (this._dragEl) {
+      const pt = this.localPt(e);
+      const dx = pt.x - this._dragEl.ox, dy = pt.y - this._dragEl.oy;
+      this._off.set(this._dragEl.el, { dx, dy });
+      this._dragEl.el.style.translate = dx + 'px ' + dy + 'px';
+    }
+  };
+  onPointerUp = (e) => {
+    if (this._draw) {
+      if (this._draw.pts.length > 1) {
+        const st = this._draw;
+        this.setState(s => ({ strokes: [...s.strokes, st] }));
+      }
+      this._draw = null;
+      if (this.inkLiveRef.current) this.inkLiveRef.current.setAttribute('d', '');
+    } else if (this._tap) {
+      const moved = Math.abs(e.clientX - this._tap.x) + Math.abs(e.clientY - this._tap.y);
+      if (moved < 8) this.place(this._tap.pt, this.state.tool);
+      this._tap = null;
+    }
+    this._drag = null;
+    if (this._dragEl) { this._dragEl.el.style.cursor = 'grab'; this._dragEl = null; }
+  };
+  place(pt, tool) {
+    if (tool === 'text') { this.placeTextInput(pt); return; }
+    if (tool === 'pen') { this.placeSticker(pt); return; }
+    if (tool === 'camera') { this.openCamera(pt); return; }
+  }
+  placeSticker(pt) {
+    if (this._stMenu) this._closeStickerMenu();
+    const stage = this.q('stage'); if (!stage) return;
+    const names = ['uploads/sticker/alien.png','uploads/sticker/boba-cat.png','uploads/sticker/boba.png','uploads/sticker/cactus.png','uploads/sticker/camera.png','uploads/sticker/cat-with-bonnet.png','uploads/sticker/dog1.png','uploads/sticker/dog2.png','uploads/sticker/hat.png','uploads/sticker/heart-ice-coffee.png','uploads/sticker/image 46.png','uploads/sticker/latte.png','uploads/sticker/soup.png','uploads/sticker/sprite.png','uploads/sticker/star-toast.png','uploads/sticker/sun.png','uploads/sticker/toast.png','uploads/sticker/yakult.png'];
+    const pScene = this.mobile ? this.p : 0.5 + 0.5 * this.p;
+    const b = this.stops3(pScene, { x: 31.177, y: 156.317, s: 1 }, { x: 81.699, y: 185.529, s: 0.6970 }, { x: 109.612, y: 234.149, s: 0.5371 });
+    const mx = Math.max(this.mobile ? 135 : 118, Math.min(this.mobile ? 267 : 284, b.x + pt.x * b.s));
+    const my = Math.max(60, Math.min(600, b.y + pt.y * b.s + 16));
+    const cell = this.mobile ? 46 : 38;
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'position:absolute; left:' + mx + 'px; top:' + my + 'px; transform:translate(-50%,0); z-index:30; width:' + (this.mobile ? 262 : 228) + 'px; display:flex; flex-wrap:wrap; gap:4px; padding:10px; border-radius:18px; background:rgba(255,255,255,.9); -webkit-backdrop-filter:blur(10px) saturate(160%); backdrop-filter:blur(10px) saturate(160%); box-shadow:0 14px 34px rgba(30,32,28,.2), inset 0 0 0 .75px rgba(255,255,255,.5); animation:brdrm-pop .25s cubic-bezier(.2,1.4,.4,1)';
+    names.forEach(src => {
+      const im = document.createElement('img');
+      im.src = src; im.alt = 'sticker'; im.draggable = false;
+      im.style.cssText = 'width:' + cell + 'px; height:' + cell + 'px; object-fit:contain; cursor:pointer; border-radius:8px; padding:2px';
+      im.addEventListener('mouseenter', () => im.style.background = 'rgba(0,0,0,.07)');
+      im.addEventListener('mouseleave', () => im.style.background = 'none');
+      im.addEventListener('click', () => {
+        const id = ++this._ni;
+        this.setState(s => ({ notes: [...s.notes, { i: id, x: pt.x, y: pt.y, img: src, w: 74, rot: (Math.random() * 14 - 7) }] }));
+        this._closeStickerMenu();
+      });
+      wrap.appendChild(im);
+    });
+    wrap.addEventListener('pointerdown', ev => ev.stopPropagation());
+    stage.appendChild(wrap);
+    this._stMenu = wrap;
+    this._stMenuOut = (ev) => { if (this._stMenu && !this._stMenu.contains(ev.target)) this._closeStickerMenu(); };
+    setTimeout(() => window.addEventListener('pointerdown', this._stMenuOut, true), 60);
+  }
+  _closeStickerMenu() {
+    if (!this._stMenu) return;
+    this._stMenu.remove(); this._stMenu = null;
+    window.removeEventListener('pointerdown', this._stMenuOut, true);
+  }
+  openCamera(pt) {
+    if (this._cam) return;
+    const board = this.q('board'); if (!board) return;
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'position:absolute; left:' + pt.x + 'px; top:' + pt.y + 'px; transform:translate(-50%,-50%); z-index:40; width:150px; border-radius:14px; overflow:hidden; background:rgb(0,0,0); box-shadow:0 10px 26px rgba(0,0,0,.3); animation:brdrm-pop .28s cubic-bezier(.2,1.4,.4,1)';
+    wrap.innerHTML = '<video autoplay playsinline muted style="display:block;width:100%;height:112px;object-fit:cover;transform:scaleX(-1)"></video>' +
+      '<div style="display:flex;align-items:center;justify-content:center;gap:14px;padding:7px 0;background:rgb(0,0,0)">' +
+      '<button data-cam="snap" aria-label="take photo" style="width:30px;height:30px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 2.5px rgb(0,0,0), 0 0 0 1.5px #fff"></button>' +
+      '<button data-cam="close" aria-label="close camera" style="color:#fff;font-family:SF Mono,ui-monospace,Menlo,monospace;font-size:12px">\u2715</button></div>';
+    board.appendChild(wrap);
+    wrap.addEventListener('pointerdown', ev => ev.stopPropagation());
+    this._cam = { wrap, stream: null };
+    const video = wrap.querySelector('video');
+    const cleanup = () => {
+      if (!this._cam) return;
+      if (this._cam.stream) this._cam.stream.getTracks().forEach(t => t.stop());
+      wrap.remove(); this._cam = null;
+    };
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } }).then(stream => {
+        if (!this._cam) { stream.getTracks().forEach(t => t.stop()); return; }
+        this._cam.stream = stream;
+        video.srcObject = stream;
+      }).catch(() => {
+        if (video) video.outerHTML = '<div style="display:flex;align-items:center;justify-content:center;width:100%;height:112px;color:#fff;font-family:SF Mono,ui-monospace,Menlo,monospace;font-size:11px">camera blocked</div>';
+        setTimeout(cleanup, 1600);
+      });
+    } else {
+      if (video) video.outerHTML = '<div style="display:flex;align-items:center;justify-content:center;width:100%;height:112px;color:#fff;font-family:SF Mono,ui-monospace,Menlo,monospace;font-size:11px">camera unavailable</div>';
+      setTimeout(cleanup, 1600);
+    }
+    wrap.querySelector('[data-cam="close"]').addEventListener('click', cleanup);
+    wrap.querySelector('[data-cam="snap"]').addEventListener('click', () => {
+      if (!this._cam || !this._cam.stream) return;
+      const c = document.createElement('canvas');
+      c.width = video.videoWidth || 320; c.height = video.videoHeight || 240;
+      const ctx = c.getContext('2d');
+      ctx.translate(c.width, 0); ctx.scale(-1, 1);
+      ctx.drawImage(video, 0, 0);
+      const url = c.toDataURL('image/jpeg', 0.82);
+      const id = ++this._ni;
+      this.setState(s => ({ notes: [...s.notes, { i: id, x: pt.x, y: pt.y, img: url, w: 120, rot: (Math.random() * 8 - 4) }] }));
+      cleanup();
+    });
+  }
+  placeTextInput(pt) {
+    const board = this.q('board'); if (!board || this._editInp) return;
+    const color = this.props.yourColor || 'rgb(31,107,255)';
+    const inp = document.createElement('input');
+    inp.type = 'text'; inp.placeholder = 'note\u2026';
+    inp.style.cssText = 'position:absolute; left:' + pt.x + 'px; top:' + pt.y + 'px; transform:translate(-50%,-50%) rotate(-2deg); z-index:40; width:118px; padding:6px 13px 8px; border-radius:17px; background:' + color + '; color:#fff; font-family:SF Mono,ui-monospace,Menlo,monospace; font-weight:500; font-size:16px; letter-spacing:-.05em; border:none; outline:none; box-shadow:0 6px 16px rgba(0,0,0,.16); animation:brdrm-pop .28s cubic-bezier(.2,1.4,.4,1)';
+    inp.className = 'brdrm-note';
+    board.appendChild(inp);
+    this._editInp = inp;
+    setTimeout(() => inp.focus(), 30);
+    const commit = () => {
+      if (!this._editInp) return;
+      const v = inp.value.trim();
+      this._editInp = null; inp.remove();
+      if (v) {
+        const id = ++this._ni;
+        this.setState(s => ({ notes: [...s.notes, { i: id, x: pt.x, y: pt.y, text: v, color, rot: (Math.random() * 8 - 4) }] }));
+      }
+    };
+    inp.addEventListener('keydown', ev => {
+      ev.stopPropagation();
+      if (ev.key === 'Enter') { ev.preventDefault(); commit(); }
+      else if (ev.key === 'Escape') { this._editInp = null; inp.remove(); }
+    });
+    inp.addEventListener('blur', commit);
+    inp.addEventListener('pointerdown', ev => ev.stopPropagation());
+  }
+  onItemDown = (e) => {
+    if (this.p >= 0.1) return;
+    e.stopPropagation();
+    const idx = +e.currentTarget.getAttribute('data-item');
+    const pt = this.localPt(e);
+    const note = this.state.notes.find(n => n.i === idx);
+    if (!note) return;
+    this._drag = { i: idx, ox: pt.x - note.x, oy: pt.y - note.y };
+  };
+  onDragDown = (e) => {
+    if (this.p >= 0.1) return;
+    e.stopPropagation(); e.preventDefault();
+    const el = e.currentTarget;
+    if (!this._off) this._off = new Map();
+    const cur = this._off.get(el) || { dx: 0, dy: 0 };
+    const pt = this.localPt(e);
+    this._dragEl = { el, ox: pt.x - cur.dx, oy: pt.y - cur.dy };
+    el.style.zIndex = 30;
+    el.style.cursor = 'grabbing';
+  };
+
+  // ---------- tools + email ----------
+  onToolClick = (e) => {
+    const t = e.currentTarget.dataset.tool;
+    if (t === 'voice' || t === 'photo') return;
+    if (t === 'text') {
+      if (this.p < 0.1) this.placeTextInput({ x: 120 + Math.random() * 100, y: 130 + Math.random() * 80 });
+      return;
+    }
+    if (t === 'pen') {
+      if (this.p < 0.1) this.placeSticker({ x: 130 + Math.random() * 80, y: 130 + Math.random() * 80 });
+      return;
+    }
+    if (t === 'camera') {
+      if (this.p < 0.1) this.openCamera({ x: 130 + Math.random() * 80, y: 130 + Math.random() * 80 });
+      return;
+    }
+    this.setState(s => ({ tool: s.tool === t ? null : t }));
+  };
+  tryEmail() {
+    const input = this.q('emailinput');
+    const v = input ? input.value.trim() : '';
+    if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)) { this.setState({ emailDone: true }); }
+    else {
+      const box = this.q('emailbox');
+      if (box) { box.style.boxShadow = 'inset 0 0 0 1.8px rgb(255,90,61)'; setTimeout(() => { if (box) box.style.boxShadow = 'inset 0 0 0 1.5px rgb(219,219,214)'; }, 900); }
+    }
+  }
+  submitEmail = () => this.tryEmail();
+  onEmailKey = (e) => { if (e.key === 'Enter') { e.preventDefault(); this.tryEmail(); } };
+  onEmailFocus = (e) => { e.target.placeholder = 'your@email.com'; };
+  onEmailBlur = (e) => { if (!e.target.value.trim()) e.target.placeholder = 'join the waitlist'; };
+  onEmailInput = (e) => {
+    const has = e.target.value.trim().length > 0;
+    const btn = this.q('emailbtn');
+    if (btn) { btn.style.opacity = has ? '1' : '0'; btn.style.pointerEvents = has ? 'auto' : 'none'; btn.style.transform = 'translateY(-50%) scale(' + (has ? '1' : '.6') + ')'; }
+  };
+
+  // ---------- render ----------
+  renderVals() {
+    if (!this._team) {
+      const pool = [
+        { name: 'Luke', color: 'rgb(3,153,0)' },
+        { name: 'Mia', color: 'rgb(189,0,255)' }
+      ];
+      let n = this.props.liveTeammates == null ? 3 : this.props.liveTeammates;
+      n = Math.max(1, Math.min(3, Math.round(n)));
+      this._team = pool.slice(0, n).map((t, i) => ({ ...t, idx: i }));
+    }
+    const strokes = this.state.strokes.map(s => ({ d: this.toPath(s.pts), color: s.color, width: s.width }));
+    return {
+      rootRef: this.rootRef,
+      inkLiveRef: this.inkLiveRef,
+      yourColor: this.props.yourColor || 'rgb(31,107,255)',
+      team: this._team,
+      strokes,
+      notes: this.state.notes,
+      reactions: this.state.reactions,
+      emailDone: this.state.emailDone,
+      notEmailDone: !this.state.emailDone,
+      onToolClick: this.onToolClick,
+      onBoardDown: this.onBoardDown,
+      onItemDown: this.onItemDown,
+      onDragDown: this.onDragDown,
+      onEmailInput: this.onEmailInput,
+      onEmailFocus: this.onEmailFocus,
+      onEmailBlur: this.onEmailBlur,
+      onEmailKey: this.onEmailKey,
+      submitEmail: this.submitEmail
+    };
+  }
+}
+</script>
+</body>
+</html>
