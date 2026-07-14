@@ -22,9 +22,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # Assemble the live site straight from design-source (no bundler step),
+      # so every edit to design-source/ deploys as-is.
+      - name: Assemble site
+        run: |
+          mkdir -p _site/uploads/sticker
+          cp design-source/Boardroom.dc.html _site/index.html
+          cp design-source/support.js _site/support.js
+          cp -r assets _site/assets
+          cp assets/stickers/*.png _site/uploads/sticker/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: build
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v4
