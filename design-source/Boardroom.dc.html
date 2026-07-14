@@ -169,13 +169,14 @@
       <!-- ================= LANDING COPY ================= -->
       <div data-role="welcome" style="position:absolute; left:0; top:100px; width:402.063px; text-align:center; opacity:0; z-index:6">
         <div style="font-family:'SF Mono',ui-monospace,'DM Mono',Menlo,monospace; font-weight:500; font-size:16px; line-height:1.2; letter-spacing:-.05em; color:rgb(0,0,0)">Welcome to Boardroom.</div>
+        <div style="font-family:'SF Mono',ui-monospace,'DM Mono',Menlo,monospace; font-weight:500; font-size:16px; line-height:1.2; letter-spacing:-.05em; color:rgb(140,140,136); margin-top:7px">close friends on your homescreen</div>
       </div>
 
       <!-- email capture -->
       <div data-role="email" style="position:absolute; left:84.032px; top:702px; width:234px; height:43px; opacity:0; z-index:6">
         <sc-if value="{{ notEmailDone }}" hint-placeholder-val="{{ true }}">
           <div data-role="emailbox" style="position:relative; width:100%; height:100%; border-radius:100px; box-shadow:inset 0 0 0 1.5px rgb(219,219,214); display:flex; align-items:center; transition:box-shadow .18s">
-            <input data-role="emailinput" type="email" placeholder="join the waitlist" onFocus="{{ onEmailFocus }}" onBlur="{{ onEmailBlur }}" onInput="{{ onEmailInput }}" onKeyDown="{{ onEmailKey }}" style="flex:1; width:100%; height:100%; padding:0 40px; text-align:center; font-family:'SF Mono',ui-monospace,'DM Mono',Menlo,monospace; font-weight:500; font-size:16px; letter-spacing:-.05em; color:rgb(0,0,0); background:none; border:none">
+            <input data-role="emailinput" type="email" placeholder="join the waitlist" onFocus="{{ onEmailFocus }}" onBlur="{{ onEmailBlur }}" onInput="{{ onEmailInput }}" onKeyDown="{{ onEmailKey }}" style="flex:1; width:100%; height:100%; padding:0 44px 0 22px; text-align:left; font-family:'SF Mono',ui-monospace,'DM Mono',Menlo,monospace; font-weight:500; font-size:16px; letter-spacing:-.05em; color:rgb(0,0,0); background:none; border:none">
             <button data-role="emailbtn" onClick="{{ submitEmail }}" aria-label="Join the waitlist" style="position:absolute; right:5px; top:50%; width:33px; height:33px; border-radius:50%; background:rgb(0,0,0); display:flex; align-items:center; justify-content:center; opacity:0; transform:translateY(-50%) scale(.6); transform-origin:center; pointer-events:none; transition:opacity .2s ease, transform .2s cubic-bezier(.2,1.4,.4,1)">
               <svg width="15" height="15" viewBox="0 0 15 15"><path d="M2 7.5 L12 7.5 M7.5 3 L12 7.5 L7.5 12" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </button>
@@ -265,7 +266,7 @@ class Component extends DCLogic {
     const sticky = this.q('sticky'); if (sticky) sticky.style.height = vh + 'px';
     // Mobile: fit to a shorter reference height so the hero renders ~20% larger.
     // The top badge / bottom hint move inward (below) so they stay on-screen.
-    const refH = this.mobile ? 728 : 874;
+    const refH = this.mobile ? 810 : 874;
     const scale = Math.min(vw / 402.063, vh / refH);
     st.style.transform = 'scale(' + scale + ')';
     this.stageScale = scale;
