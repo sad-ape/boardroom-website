@@ -272,7 +272,7 @@ class Component extends DCLogic {
     this.stageScale = scale;
     const live = this.q('live'); if (live) live.style.top = (this.mobile ? 78 : 30) + 'px';
     const hint = this.q('hint'); if (hint) hint.style.top = (this.mobile ? 764 : 812) + 'px';
-    if (track) track.style.height = Math.round((this.mobile ? 3.4 : 2.5) * vh) + 'px';
+    if (track) track.style.height = Math.round((this.mobile ? 2.2 : 1.7) * vh) + 'px';
   }
   readScroll() {
     const el = this.rootRef.current; if (!el) return;
