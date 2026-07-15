@@ -582,7 +582,18 @@ class Component extends DCLogic {
     inp.className = 'brdrm-note';
     board.appendChild(inp);
     this._editInp = inp;
-    setTimeout(() => inp.focus(), 30);
+    // Focus synchronously within the tap gesture so iOS Safari opens the
+    // keyboard immediately (a deferred focus() breaks the gesture chain).
+    // Re-assert on the next frame in case completing the click resets focus,
+    // and only arm blur-to-commit once settled so a transient focus loss
+    // during the gesture doesn't discard the fresh note.
+    let armed = false;
+    inp.focus({ preventScroll: true });
+    requestAnimationFrame(() => {
+      if (this._editInp !== inp) return;
+      if (document.activeElement !== inp) inp.focus({ preventScroll: true });
+      armed = true;
+    });
     const commit = () => {
       if (!this._editInp) return;
       const v = inp.value.trim();
@@ -597,7 +608,7 @@ class Component extends DCLogic {
       if (ev.key === 'Enter') { ev.preventDefault(); commit(); }
       else if (ev.key === 'Escape') { this._editInp = null; inp.remove(); }
     });
-    inp.addEventListener('blur', commit);
+    inp.addEventListener('blur', () => { if (armed) commit(); });
     inp.addEventListener('pointerdown', ev => ev.stopPropagation());
   }
   onItemDown = (e) => {
