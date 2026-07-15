@@ -3,10 +3,8 @@
 ## Overview
 Scroll-driven landing page for **Boardroom** — a shared-canvas app. One pinned stage morphs a live, interactive collage board from a full-bleed hero into an iPhone app view, and finally into an iOS home screen, ending on a waitlist email capture. The board is genuinely interactive (draw, write notes, place stickers, take webcam photos, drag everything). Each visitor's session is single-player; the top badge shows a simulated live count.
 
-## About the Design Files
-The files in this bundle are **design references created in HTML** — working prototypes showing the intended look and behavior, not production code to copy directly. The task is to **recreate this design in the target codebase** (the real repo `adilanchian/brdrmdotapp` is Next.js + Vercel) using its established patterns.
-
-**Shortcut that is allowed:** `build/index.html` is a fully self-contained static build (all assets/fonts inlined, works offline). It can be shipped AS-IS as a static page (e.g. committed to `public/lp.html` in the Next.js repo → served at `/lp.html`) while a native reimplementation is built.
+## About the Files
+`design-source/Boardroom.dc.html` (+ `support.js`) is the actual, live, self-contained site — it ships as-is and is what GitHub Pages serves. To deploy your own copy see **[DEPLOY.md](DEPLOY.md)**. The rest of this document is the original design spec (exact colors, sizes, coordinates, and behavior), useful if you ever want to reimplement it in another codebase.
 
 ## Fidelity
 **High-fidelity.** Built from the Boardroom Figma file. All colors, sizes, coordinates and type below are exact — do not round them.
@@ -77,9 +75,9 @@ Starts at scene 1 (board full-bleed); no default tool (so touch scroll works —
 - Source of truth for visuals: the **Boardroom Figma file** (owned by the user)
 
 ## Files
-- `design-source/Boardroom.dc.html` + `design-source/support.js` — the interactive design prototype (open Boardroom.dc.html in a browser next to support.js). **Reference for all behavior and values.**
-- `build/index.html` — self-contained production-ready static build (everything inlined, ~1.7MB). Ship as-is if desired (`public/lp.html` in the Next.js repo, or any static host / GitHub Pages).
+- `design-source/Boardroom.dc.html` + `design-source/support.js` — the live site source. This is what actually ships (served as `index.html` + `support.js`). **Reference for all behavior and values.**
+- `assets/` — images, icons, and the 18 stickers.
+- `.github/workflows/deploy.yml` — assembles the site from `design-source/` + `assets/` and deploys it to GitHub Pages on every push to `main`.
 
-## Deploy context (as of handoff)
-- Real repo: `adilanchian/brdrmdotapp` (Next.js, Vercel project "Wind Down Studio" → brdrmdotapp.vercel.app). Note: Vercel blocks deployments for commits authored by `sad-ape` (not on the Vercel team) while the repo is private — commit as `adilanchian`, or make the repo public.
-- Temp test deploy: `sad-ape/brdrm-website` (public) with this `index.html` at root — enable GitHub Pages (main/root) → https://sad-ape.github.io/brdrm-website/.
+## Deploy
+This repo deploys itself to GitHub Pages via the included Actions workflow — no build step. See **[DEPLOY.md](DEPLOY.md)** for how to fork it and deploy your own copy. Live at https://sad-ape.github.io/boardroom-website/.
